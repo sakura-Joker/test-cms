@@ -1,17 +1,14 @@
 <template>
   <div class="app-wrapper">
-    <Sidebar />
+    <sidebar class="sidebar-contaienr" />
     <div>
-      <Navbar />
+      <navbar />
       <app-main></app-main>
     </div>
   </div>
 </template>
 <script>
-// import { AppMain, Navbar, Sidebar } from "@/components";
-import AppMain from '@/components/AppMain'
-import Sidebar from '@/components/Sidebar'
-import Navbar from '@/components/Navbar'
+import { AppMain, Sidebar, Navbar } from "@/components";
 export default {
   name: "layout",
   components: {
