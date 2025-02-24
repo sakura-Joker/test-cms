@@ -1,13 +1,12 @@
 <template>
-  <section class="app-main">
-    <router-view></router-view>
-  </section>
+  <div></div>
 </template>
 <script>
 export default {
-  name: "Appmain",
+  name: "activity",
   data() {
     return {};
   },
 };
 </script>
+<style scoped lang="less"></style>

@@ -1,12 +1,13 @@
 <template>
-  <component v-bind:is="linkProps(to)">
+  <!-- eslint-disable vue/require-component-is -->
+  <component v-bind="linkProps(to)">
     <slot />
   </component>
 </template>
 <script>
 import { Validator } from "@bigbighu/cms-utils";
 export default {
-  name: "link",
+  name: "Applink",
   props: {
     to: {
       type: String,

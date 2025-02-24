@@ -7,7 +7,6 @@ Vue.use(Router);
 const constantRoutes = [
   {
     path: "/",
-    redirect: "/home",
     component: Layout,
     children: [
       {
@@ -18,8 +17,17 @@ const constantRoutes = [
         },
         component: () => import("@/pages/home"),
       },
+      {
+        path: "activity",
+        name: "活动管理",
+        meta: {
+          title: "活动管理",
+          breadcrumb: false,
+        },
+        component: () => import("@/pages/activity"),
+      },
     ],
   },
 ];
 
-export default new Router({routes:constantRoutes})
+export default new Router({ routes: constantRoutes });

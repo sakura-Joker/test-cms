@@ -8,7 +8,10 @@
         !item.alwaysShow
       "
     >
-      <app-link>
+      <app-link
+        :to="resolvePath(onlyOneChild.path)"
+        v-if="item.redirect != 'noRedirect' && onlyOneChild.meta"
+      >
         <el-menu-item
           :index="resolvePath(onlyOneChild.path)"
           class="submenu-title-noDropdown"
@@ -21,6 +24,7 @@
     <el-submenu v-else :index="resolvePath(item.path)">
       <template slot="title">
         <Item
+          v-if="item.meta"
           :icon="item.meta && item.meta.icon"
           :title="item.meta && item.meta.title"
         />
@@ -37,7 +41,7 @@
 </template>
 <script>
 import path from "path";
-import AppLink from "./Link.vue";
+import AppLink from "./AppLink.vue";
 import { Validator } from "@bigbighu/cms-utils";
 import Item from "./item.vue";
 export default {
@@ -57,19 +61,25 @@ export default {
     Item,
   },
   data() {
+    this.onlyOneChild = null;
     return {
       onlyOneChild: "",
     };
   },
   methods: {
     hasOneShowingChild(children = [], parent) {
-      const showingChildren = children.filter((item) => !item.hidden);
-      if (showingChildren.length > 0) {
-        return false;
-      } else {
+      const showingChildren = children.filter((item) => {
+        if (item.hidden) {
+          return false;
+        } else {
+          return true;
+        }
+      });
+      if (showingChildren.length === 0) {
         this.onlyOneChild = { ...parent, path: "", noShowingChildren: true };
         return true;
       }
+      return false;
     },
     resolvePath(routePath) {
       //判断跳换链接是否存在

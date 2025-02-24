@@ -2,6 +2,7 @@
   <div class="has-logo">
     <p @click="goHome" class="system-title">
       <img src="../../assets/logo.png" alt="" />
+      <span>CMS页面配置系统</span>
     </p>
     <el-menu
       :collapse="true"
@@ -501,3 +502,20 @@ export default {
   },
 };
 </script>
+<style lang="less" scoped>
+.system-title {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  img {
+    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+  }
+}
+</style>
