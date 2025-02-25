@@ -8,6 +8,7 @@ const constantRoutes = [
   {
     path: "/",
     component: Layout,
+    redirect: "/home",
     children: [
       {
         path: "home",
@@ -27,6 +28,14 @@ const constantRoutes = [
         component: () => import("@/pages/activity"),
       },
     ],
+  },
+  {
+    path: "/decorate",
+    name: "活动详情",
+    meta: {
+      title: "活动详情",
+    },
+    component: () => import("@/pages/decorate"),
   },
 ];
 
